@@ -39,9 +39,13 @@ if [[ -z "$TF_VAR_region" ]]; then
 fi
 
 cd "${_BRANCH_NAME}"/ || exit
+echo "[LOG] Running terraform init"
 terraform init -input=false
+echo "[LOG] Running terraform get"
 terraform get
+echo "[LOG] Running terraform validate"
 terraform validate
+echo "[LOG] Running terraform plan"
 terraform plan -out=plan.tfout -no-color -var environment="${_BRANCH_NAME}" 2>&1 | tee plan.md
 no_changes=$(awk '/^No changes/' plan.md)
 if [[ -z "$no_changes" ]]; then
@@ -62,5 +66,6 @@ else
 fi
 
 if [[ "$_TERRAFORM_APPLY" = "true" && -n $my_plan && -z $no_changes ]]; then
+    echo "[LOG] Running terraform apply"
     terraform apply -auto-approve plan.tfout 
 fi
