@@ -63,14 +63,14 @@ A template for maintaining a multiple environments infrastructure with [Terrafor
 1. GitHub > Create the following [repository secrets](https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository) for basic application details
 
    - `APP_NAME` - Application name, such as `tfmultienv`
-   - `AWS_REGION` - Region to deploy the application, such as `eu-west-1` (Ireland)
+   - `AWS_REGION` - Region to deploy the application, such as `us-east-1` (Ireland)
 
 1. GitHub > Create the following repository secrets for authenticating with AWS, according to the access keys that were created in previous steps
 
    - `AWS_ACCESS_KEY_ID_DEV`
    - `AWS_SECRET_ACCESS_KEY_DEV`
      <br>**IMPORTANT**: The names of the secrets are not arbitrary, make sure you set them as shown in the example below
-     ![github-secrets-example](https://unfor19-tfmultienv.s3-eu-west-1.amazonaws.com/assets/github-secrets-example.png)
+     ![github-secrets-example](https://unfor19-tfmultienv.s3-us-east-1.amazonaws.com/assets/github-secrets-example.png)
 
 1. Deploying the infrastructure - Commit and push changes to your repository
 
@@ -87,8 +87,8 @@ A template for maintaining a multiple environments infrastructure with [Terrafor
    - CI/CD logs in the Actions tab ([this repo's logs](https://github.com/unfor19/terraform-multienv/actions))
    - The URL of the deployed static S3 website is available in the `terraform-apply` logs, for example:
      1. `s3_bucket_url = terraform-20200912173059419600000001.s3-website-***.amazonaws.com`
-     1. Replace `***` with the `AWS_REGION`, for example `eu-west-1`
-        <br>[terraform-20200912175003424600000001.s3-website-**eu-west-1**.amazonaws.com](http://terraform-20200912173059419600000001.s3-website-eu-west-1.amazonaws.com)
+     1. Replace `***` with the `AWS_REGION`, for example `us-east-1`
+        <br>[terraform-20200912175003424600000001.s3-website-**us-east-1**.amazonaws.com](http://terraform-20200912173059419600000001.s3-website-us-east-1.amazonaws.com)
 
 1. Create `stg` branch
 
