@@ -41,6 +41,11 @@ _STACK_EXISTS=$(trap 'aws cloudformation describe-stacks --stack-name '"$_STACK_
 _STACK_EXISTS=$(echo "$_STACK_EXISTS" | grep "CreationTime")
 if [[ -z "$_STACK_EXISTS" ]]; then
     echo "[LOG] Terraform backend CloudFormation doesn't exist, creating it ..."
+    echo "[LOG] _STACK_NAME = $_STACK_NAME"
+    echo "[LOG] _TEMPLATE_PATH = $_TEMPLATE_PATH"
+    echo "[LOG] TF_VAR_app_name = $TF_VAR_app_name"
+    echo "[LOG] _BRANCH_NAME = $_BRANCH_NAME"
+    
     aws cloudformation deploy \
         --stack-name "$_STACK_NAME" \
         --template-file "$_TEMPLATE_PATH" \
