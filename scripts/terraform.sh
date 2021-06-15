@@ -41,6 +41,8 @@ fi
 cd "${_BRANCH_NAME}"/ || exit
 echo "[LOG] Running terraform init"
 terraform init -input=false
+echo "[LOG] Running terraform state pull"
+terraform state pull
 echo "[LOG] Running terraform get"
 terraform get
 echo "[LOG] Running terraform validate"
