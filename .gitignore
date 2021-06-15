@@ -1,0 +1,15 @@
+.*
+!.*ignore*
+!.github/
+!.circleci/
+!.drone.yml
+!.travis.yml
+**/*.terraform
+*.idea
+*tfstate*
+dev/
+stg/
+prd/
+development/
+staging/
+prod/
